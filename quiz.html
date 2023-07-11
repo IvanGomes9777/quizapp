@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-<body>
+<body onload="render()">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1">QuizApp</span>
@@ -16,35 +16,45 @@
       </nav>
       <div class="container">
       <div class="card quiz-card">
-        <img src="img/quizimg.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Frage</h5>
-          <div class="card mb-2">
-            <div class="card-body">
-              Was ist die Hauptstadt von Deutschland?
+        <img id="header-img" src="img/quizimg.png" class="card-img-top" alt="...">
+
+        <div class="card-body" id="endScreen" style="display: none;">
+           <div class="endScreenText"> 
+            <h1>Quiz beendet!</h1>
+        </div>
+
+        <div style="text-align: center;">
+            <p>Du hast <b id="amount-Of-Right-questions">XXX</b> von <b id="amountOfQuestions">XXX</b> Fragen richtig beantwortet</p>
+        </div>
+        </div>
+
+        <div id="questionBody" class="card-body">
+          <h5 class="card-title" id="questiontext">Frage</h5>
+          <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
+            <div class="card-body" id="answer_1">
+              Katze
             </div>
           </div>
-          <div class="card mb-2">
-            <div class="card-body">
-              Wie heisst der President von den USA?
+          <div class="card quiz-answer-card mb-2" onclick="answer('answer_2')">
+            <div class="card-body" id="answer_2">
+              Katze
             </div>
           </div>
-          <div class="card mb-2">
-            <div class="card-body">
-              Wie groß ist ein iPhone 12?
+          <div class="card quiz-answer-card mb-2" onclick="answer('answer_3')" >
+            <div class="card-body" id="answer_3">
+              Katze
             </div>
           </div>
-          <div class="card mb-2">
-            <div class="card-body">
-              Was trinken Kühe am liebsten?
+          <div class="card quiz-answer-card mb-2" onclick="answer('answer_4')" >
+            <div class="card-body" id="answer_4">
+              Katze
             </div>
           </div>
           <div class="quiz-footer">
             <span>
-            <b>1</b> von <b>5</b> Fragen
+            <b id="questions-length-one"></b> von <b id="questions-length"></b> Fragen
         </span>
-        <button type="button" class="btn btn-outline-success">Nächste Frage</button>
-
+        <button onclick="nextQuestion()" type="button" disabled id="next-button" class="btn btn-outline-primary">Nächste Frage</button>
               </div>
       </div>
       

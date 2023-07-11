@@ -2,6 +2,10 @@ body {
   background-color: aqua;
 }
 
+.quiz-card {
+  width: 25rem;
+}
+
 .container {
   min-height: 100vh;
   background-color: aqua;
@@ -13,11 +17,29 @@ body {
 .quiz-footer {
   display: flex;
   justify-content: space-between;
- align-items: center;
- border-top: 1px solid rgba(0, 0, 0, 0.4);
- padding-top: 12px;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  padding-top: 12px;
 }
 
-.quiz-card{
-  width: 30rem;
+.quiz-answer-card:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.bg-success,
+.bg-danger {
+  color: white;
+}
+
+.trophy-img-container img{
+  width: 100%;
+}
+
+.endScreenText{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
 }
