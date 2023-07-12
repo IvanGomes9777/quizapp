@@ -17,7 +17,9 @@
       <div class="container">
       <div class="card quiz-card">
         <img id="header-img" src="img/quizimg.png" class="card-img-top" alt="...">
-
+        <div class="progress">
+            <div id="progress-bar" class="progress-bar" role="progressbar" style="width:25%;">0%</div>
+          </div>
         <div class="card-body" id="endScreen" style="display: none;">
            <div class="endScreenText"> 
             <h1>Quiz beendet!</h1>
@@ -26,6 +28,11 @@
         <div style="text-align: center;">
             <p>Du hast <b id="amount-Of-Right-questions">XXX</b> von <b id="amountOfQuestions">XXX</b> Fragen richtig beantwortet</p>
         </div>
+        <div class="btn-restart">
+            <button onclick="restartButton()" type="button" class="btn btn-outline-primary">Nochmal Spielen</button>
+
+        </div>
+        
         </div>
 
         <div id="questionBody" class="card-body">
@@ -55,7 +62,7 @@
             <b id="questions-length-one"></b> von <b id="questions-length"></b> Fragen
         </span>
         <button onclick="nextQuestion()" type="button" disabled id="next-button" class="btn btn-outline-primary">Nächste Frage</button>
-              </div>
+        </div>
       </div>
       
     </div>

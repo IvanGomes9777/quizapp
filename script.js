@@ -58,8 +58,12 @@ function showQuestion() {
     document.getElementById('header-img').src ='img/trophy.png';
   } else {
     let question = questions[currentQuestion];
-    document.getElementById("questions-length-one").innerHTML =
-      currentQuestion + 1;
+    let percent=(currentQuestion + 1) / questions.length;
+    percent=Math.round(percent * 100);
+    document.getElementById('progress-bar').innerHTML=`${percent} %`;
+    document.getElementById('progress-bar').style.width=`${percent}%`;
+
+    document.getElementById("questions-length-one").innerHTML =currentQuestion + 1;
     document.getElementById("questiontext").innerHTML = question["question"];
     document.getElementById("answer_1").innerHTML = question["answer_1"];
     document.getElementById("answer_2").innerHTML = question["answer_2"];
@@ -101,4 +105,13 @@ function resetAnswerButtons() {
   document.getElementById("answer_3").parentNode.classList.remove("bg-success");
   document.getElementById("answer_4").parentNode.classList.remove("bg-danger");
   document.getElementById("answer_4").parentNode.classList.remove("bg-success");
+}
+
+function restartButton(){
+    document.getElementById('header-img').src ='img/quizimg.png';
+    document.getElementById('questionBody').style='';
+    document.getElementById('endScreen').style='display:none;'
+    rightQuestions=0;
+    currentQuestion=0;
+    render();
 }
