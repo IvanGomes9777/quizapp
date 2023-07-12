@@ -41,6 +41,7 @@ let questions = [
   },
 ];
 
+let answered=false;
 let rightQuestions = 0;
 let currentQuestion = 0;
 
@@ -90,37 +91,36 @@ function endScreen() {
 }
 
 function answer(selection) {
-  let question = questions[currentQuestion];
-
-  let selectedQuestionNumber = selection.slice(-1);
-
-  let idOfRightAnswer = `answer_${question["right_answer"]}`;
-
-  if (selectedQuestionNumber == question["right_answer"]) {
-    document
-      .getElementById(selection)
-      .parentElement.classList.add("bg-success");
-    rightQuestions++; //plus 1 wenn ergebnis richtig ist
-    AUDIO_SUCCESS.play();
-  } else {
-    document.getElementById(selection).parentElement.classList.add("bg-danger");
-    document
-      .getElementById(idOfRightAnswer)
-      .parentElement.classList.add("bg-success");
-    AUDIO_FAIL.play();
+    if (answered) {
+      return; 
+    }
+  
+    let question = questions[currentQuestion];
+    let selectedQuestionNumber = selection.slice(-1);
+    let idOfRightAnswer = `answer_${question["right_answer"]}`;
+  
+    if (selectedQuestionNumber == question["right_answer"]) {
+      document.getElementById(selection).parentElement.classList.add("bg-success");
+      rightQuestions++;
+      AUDIO_SUCCESS.play();
+    } else {
+      document.getElementById(selection).parentElement.classList.add("bg-danger");
+      document.getElementById(idOfRightAnswer).parentElement.classList.add("bg-success");
+      AUDIO_FAIL.play();
+    }
+    
+    answered = true; 
+    document.getElementById("next-button").disabled = false;
   }
-  document.getElementById("next-button").disabled = false;
-}
-
-function wrongAnswer() {}
-
+  
 function nextQuestion() {
-  currentQuestion++; // plus 1 um nächste frage anzuzeigen
-  document.getElementById("next-button").disabled = true;
-  resetAnswerButtons();
-  showQuestion(); //um den inhalt erneut anzuzeigen
-}
-
+    answered = false; // 
+    currentQuestion++;
+    document.getElementById("next-button").disabled = true;
+    resetAnswerButtons();
+    showQuestion();
+  }
+  
 function resetAnswerButtons() {
   document.getElementById("answer_1").parentNode.classList.remove("bg-danger");
   document.getElementById("answer_1").parentNode.classList.remove("bg-success");
