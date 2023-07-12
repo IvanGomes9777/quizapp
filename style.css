@@ -3,12 +3,10 @@ body {
 }
 
 .quiz-card {
-  width: 25rem;
+  width: 20rem;
 }
 
 .container {
-  min-height: 100vh;
-  background-color: aqua;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,4 +45,31 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 16px;
+}
+
+@media (max-width: 576px) {
+  .quiz-card {
+      width: 100%;  
+  }
+}
+
+/* Small devices (landscape phones) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .quiz-card {
+      width: 70%;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .quiz-card {
+      width: 50%;
+  }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) {
+  .quiz-card {
+      width: 40%;
+  }
 }
