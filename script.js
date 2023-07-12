@@ -1,26 +1,26 @@
 let questions = [
   {
-    question: "Was ist die Hauptstadt von Deutschland?",
-    answer_1: "Prag",
-    answer_2: "Nintendo",
-    answer_3: "Berlin",
-    answer_4: "Lazy Town",
+    question: "Wie alt ist die Mutter von Cristiano Ronaldo",
+    answer_1: 12,
+    answer_2: 55,
+    answer_3: 68,
+    answer_4: "Messi ist besser als Cristiano Ronaldo",
     right_answer: 3,
   },
   {
-    question: "Wer hat Microsoft erfunden?",
-    answer_1: "Steve Wonder",
-    answer_2: "Bushido",
-    answer_3: "Bill Gates",
+    question: "War Messi's WM Titel verdient?",
+    answer_1: "wallah ja",
+    answer_2: "Messi ist der goat",
+    answer_3: "WALLAH NEIN",
     answer_4: "Sportakus",
     right_answer: 3,
   },
   {
-    question: "Wie viele Monate haben 28 Tage?",
-    answer_1: 12,
-    answer_2: 1,
-    answer_3: 6,
-    answer_4: "Helene Fischer",
+    question: "Was hat Messi mit 35 Jahren bei PSG gewonnen?",
+    answer_1: "Der beste Lattentreffer Uber Eats",
+    answer_2: "Ballo D'Or würdig",
+    answer_3: "ALLES",
+    answer_4: "Mehr als CR7 bei Juventus",
     right_answer: 1,
   },
   {
@@ -43,6 +43,9 @@ let questions = [
 
 let rightQuestions = 0;
 let currentQuestion = 0;
+
+let AUDIO_SUCCESS= new Audio('audio/suuiii.mp3');
+let AUDIO_FAIL= new Audio('audio/mad.mp3');
 
 function render() {
   document.getElementById("questions-length").innerHTML = questions.length;
@@ -82,9 +85,11 @@ function answer(selection) {
   if (selectedQuestionNumber == question["right_answer"]) {
     document.getElementById(selection).parentElement.classList.add("bg-success");
     rightQuestions++;//plus 1 wenn ergebnis richtig ist
+    AUDIO_SUCCESS.play();
   } else {
     document.getElementById(selection).parentElement.classList.add("bg-danger");
     document.getElementById(idOfRightAnswer).parentElement.classList.add("bg-success");
+    AUDIO_FAIL.play();
   }
   document.getElementById("next-button").disabled = false;
 }
